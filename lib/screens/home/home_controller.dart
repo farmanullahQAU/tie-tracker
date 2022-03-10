@@ -4,6 +4,7 @@ import 'package:tie_tracker/screens/entry_form/entry_form_controller.dart';
 import 'package:tie_tracker/screens/entry_form/entry_form_view.dart';
 
 import '../charts/charts_view.dart';
+import '../listview/entry_listview.dart';
 
 class HomeController extends GetxController{
 
@@ -12,7 +13,10 @@ class HomeController extends GetxController{
 
 HomeCard(title: "Scan", imageUrl: 'images/scan_icon.png', onTap: (){}),
 
-HomeCard(title: "List View", imageUrl: 'images/list_icon.png', onTap: (){}),
+HomeCard(title: "List View", imageUrl: 'images/list_icon.png', onTap: (){
+Get.to(()=>EntryListView());
+
+}),
 HomeCard(title: "Entry Form", imageUrl: 'images/entry_form_icon.png', onTap: (){
 
 Get.to(()=>InventryForm(),binding: BindingsBuilder.put(()=>InventryFormController()));

@@ -62,7 +62,7 @@ GlobalKey<FormState> get formKey=>_formKey;
 
 
    moldController=TextEditingController();
-  tieController=TextEditingController();;
+  tieController=TextEditingController(text:DateTime.now().millisecondsSinceEpoch.toString());
 
    weightController=TextEditingController();;
 
@@ -88,5 +88,15 @@ Future<void> addEntryToDatabase() async {
 
 
     await FirebaseFirestore.instance.collection("entries").add(_inventoryModel.toMap());
+    clearFields();
+  }
+
+  void clearFields() {
+
+    moldController.clear();
+    weightController.clear();
+    tempratureController.clear();
+    tieController.clear();
+
   }
 }

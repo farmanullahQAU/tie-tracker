@@ -26,8 +26,8 @@ late  DateTime? dateAdded;
             json['date_added'].microsecondsSinceEpoch)
         : null;
 
-    weight = json['weight'];
-    status = json['status'];
+    weight = json['weight']??null;
+    status = json['status']??null;
   }
 
   InventryModel({

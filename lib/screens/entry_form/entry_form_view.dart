@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,6 +32,8 @@ class InventryForm extends StatelessWidget {
                     children: [
                       Expanded(
                           child: TxtField(
+                            validator:(String? val)=>val==null||val.isEmpty?"mold# required":null,
+
                             controller: _entryFormController.moldController,
                         hintText: "Mold...",
                       )),
@@ -39,6 +42,7 @@ class InventryForm extends StatelessWidget {
                       ),
                       Expanded(
                           child: TxtField(
+                            isReadOnly: true,
                             validator:(String? val)=>val==null||val.isEmpty?"tie# required":null,
 
                             controller: _entryFormController.tieController,
@@ -132,11 +136,12 @@ class InventryForm extends StatelessWidget {
                               onTap: () async {
 if(_entryFormController.formKey.currentState!.validate())
 {
-
+BotToast.showLoading();
   _entryFormController.formKey.currentState?.save();
   
 await  _entryFormController.addEntryToDatabase();
-Get.snackbar("Success", "Entry Addes Successfully");
+Get.snackbar("Added", "Entry Addes Successfully",borderRadius: 0.0);
+BotToast.closeAllLoading();
 }
 else{
 

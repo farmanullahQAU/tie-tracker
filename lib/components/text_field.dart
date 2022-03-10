@@ -10,6 +10,7 @@ class TxtField extends StatelessWidget {
   Function? validator;
   Function? onSaved;
   bool? isOutlined;
+  bool? isReadOnly;
   // int? maxLength;
   int? maxLines;
   bool? isLimit;
@@ -18,6 +19,7 @@ class TxtField extends StatelessWidget {
 
   TxtField(
       {Key? key,
+      this.isReadOnly=false,
       this.suffixIcon,
       this.prefixIcon,
       this.labelText,
@@ -26,6 +28,7 @@ class TxtField extends StatelessWidget {
       this.validator,
       this.onSaved,
       this.isOutlined = false,
+    
       // this.maxLength = 500,
       this.maxLines = 1,
       this.isLimit = true})
@@ -34,6 +37,9 @@ class TxtField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
+      
+      readOnly: isReadOnly!,
       keyboardType: TextInputType.multiline,
 
       toolbarOptions: ToolbarOptions(
@@ -43,6 +49,7 @@ class TxtField extends StatelessWidget {
         selectAll: true,
       ),
       enableInteractiveSelection: true,
+      
 
       validator: (val) => this.validator != null ? this.validator!(val) : null,
       //    onSaved:(val)=>this.onSaved!=null?this.onSaved!(val):null,
@@ -53,6 +60,7 @@ class TxtField extends StatelessWidget {
       // maxLength: this.isLimit == true ? maxLength : null,
       maxLines: this.maxLines,
       decoration: InputDecoration(
+        
           filled: true,
           // fillColor: bgColor,
           // hoverColor: bgColor,
