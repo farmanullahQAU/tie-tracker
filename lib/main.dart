@@ -7,9 +7,12 @@ import 'package:tie_tracker/route_names.dart';
 
 import 'binder.dart';
 import 'screens/home/home.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const Self());
 }
